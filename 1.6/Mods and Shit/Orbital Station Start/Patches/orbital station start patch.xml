@@ -11,11 +11,16 @@
     </value>
   </Operation>
 
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ScenarioDef[defName="OrbitalStation"]/label</xpath>
+    <value><label>Space Station</label></value>
+  </Operation>
+
   <Operation Class="PatchOperationAddModExtension">
     <xpath>/Defs/ScenarioDef[defName="OrbitalExpedition"]</xpath>
     <value>
       <li Class="ProgressionScenarios.ScenarioExtension">
-        <iconPath>ScenarioIcons/OrbitalStation</iconPath>
+        <iconPath>ScenarioIcons/OrbitalExpedition</iconPath>
         <displayOrder>36</displayOrder>
       </li>
     </value>

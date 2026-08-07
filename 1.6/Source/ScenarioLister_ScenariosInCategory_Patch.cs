@@ -21,7 +21,7 @@ namespace ProgressionScenarios
 			}
 			return filtered.OrderBy(s => {
 				var def = s.GetDef();
-				return def?.GetModExtension<ScenarioExtension>()?.displayOrder ?? float.MaxValue;
+				return def?.GetModExtension<ScenarioExtension>()?.displayOrder ?? 20f;
 			});
 		}
 	}

@@ -57,7 +57,7 @@
 		<value>
 			<li Class="ProgressionScenarios.ScenarioExtension">
 				<iconPath>ScenarioIcons/RichExplorer</iconPath>
-				<displayOrder>40</displayOrder>
+				<displayOrder>15</displayOrder>
 			</li>
 		</value>
 	</Operation>

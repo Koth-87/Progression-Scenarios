@@ -77,10 +77,10 @@
 
   <ScenarioDef ParentName="ScenarioBase">
     <defName>Ferny_AnimalLibraryStart</defName>
-    <label>Ancient Texts</label>
+    <label>Ancient Library</label>
     <modExtensions>
       <li Class="ProgressionScenarios.ScenarioExtension">
-        <iconPath>ScenarioIcons/Library</iconPath>
+        <iconPath>ScenarioIcons/TribalLibrary</iconPath>
         <displayOrder>30</displayOrder>
       </li>
     </modExtensions>
@@ -127,10 +127,10 @@
 
   <ScenarioDef ParentName="ScenarioBase">
     <defName>Ferny_NeolithicLibraryStart</defName>
-    <label>Ancient Texts</label>
+    <label>Ancient Library</label>
     <modExtensions>
       <li Class="ProgressionScenarios.ScenarioExtension">
-        <iconPath>ScenarioIcons/Library</iconPath>
+        <iconPath>ScenarioIcons/TribalLibrary</iconPath>
         <displayOrder>35</displayOrder>
       </li>
     </modExtensions>
@@ -356,7 +356,7 @@
     <modExtensions>
       <li Class="ProgressionScenarios.ScenarioExtension">
         <iconPath>ScenarioIcons/Library</iconPath>
-        <displayOrder>35</displayOrder>
+        <displayOrder>99</displayOrder>
       </li>
     </modExtensions>
     <description>While out surveying a remote area, you followed a harsh scent to a delapidated structure. The structure is filled with recordings of ideas from long ago, smelling of rotting material and nature's reclamation.\n\nThe books are falling apart, the roof is tired, and the wild is already pressing in. Still, the curious text on the pages beckon you toward them.</description>
@@ -445,10 +445,10 @@
     <modExtensions>
       <li Class="ProgressionScenarios.ScenarioExtension">
         <iconPath>ScenarioIcons/Library</iconPath>
-        <displayOrder>35</displayOrder>
+        <displayOrder>99</displayOrder>
       </li>
     </modExtensions>
-    <description>The ruin should not exist. Its accession numbers use a dead glitterworld calendar. Its lowest shelves carry paper books beside sealed data slates whose encryption makes your implants ache.\n\nYou came to recover a rumor and found a wound in the historical record. The library's custodians are gone, the alarms are silent, and every faction on this rimworld would kill for a tenth of what might still be legible. Choose what survives.</description>
+    <description>While out surveying a remote area, you followed a harsh scent to a delapidated structure. The structure is filled with recordings of ideas from long ago, smelling of rotting material and nature's reclamation.\n\nThe books are falling apart, the roof is tired, and the wild is already pressing in. Still, the curious text on the pages beckon you toward them.</description>
     <scenario>
       <summary>A group of explorers discover an uncharted abandoned library.</summary>
       <playerFaction>

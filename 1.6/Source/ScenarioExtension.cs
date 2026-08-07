@@ -5,6 +5,6 @@ namespace ProgressionScenarios
 	public class ScenarioExtension : DefModExtension
 	{
 		public string iconPath;
-		public float displayOrder = float.MaxValue;
+		public float displayOrder = 20f;
 	}
 }
