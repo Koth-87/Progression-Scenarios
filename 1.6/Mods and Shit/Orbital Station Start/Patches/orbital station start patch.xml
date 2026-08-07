@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>/Defs/ScenarioDef[defName="OrbitalStation"]</xpath>
+    <value>
+      <li Class="ProgressionScenarios.ScenarioExtension">
+        <iconPath>ScenarioIcons/OrbitalStation</iconPath>
+        <displayOrder>35</displayOrder>
+      </li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>/Defs/ScenarioDef[defName="OrbitalExpedition"]</xpath>
+    <value>
+      <li Class="ProgressionScenarios.ScenarioExtension">
+        <iconPath>ScenarioIcons/OrbitalStation</iconPath>
+        <displayOrder>36</displayOrder>
+      </li>
+    </value>
+  </Operation>
+
+</Patch>

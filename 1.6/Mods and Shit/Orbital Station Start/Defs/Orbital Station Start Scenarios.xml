@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <FactionDef ParentName="PlayerFactionBase">
+    <defName>Ferny_AnimalOrbitalSurvivors</defName>
+    <label>First Station</label>
+    <description>A band of barely-organized survivors stranded above a world they do not understand.</description>
+    <isPlayer>true</isPlayer>
+    <categoryTag>Tribal</categoryTag>
+    <pawnSingular>survivor</pawnSingular>
+    <pawnsPlural>survivors</pawnsPlural>
+    <basicMemberKind>WildMan</basicMemberKind>
+    <techLevel>Animal</techLevel>
+    <factionNameMaker>NamerFactionTribal</factionNameMaker>
+    <settlementNameMaker>NamerSettlementTribal</settlementNameMaker>
+    <allowedCultures>
+      <li>Corunan</li>
+    </allowedCultures>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Tribal</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+    <factionIconPath>World/WorldObjects/Expanding/Village</factionIconPath>
+    <settlementTexturePath>World/WorldObjects/TribalSettlement</settlementTexturePath>
+    <forageabilityFactor>1.7</forageabilityFactor>
+    <apparelStuffFilter>
+      <thingDefs>
+        <li>Cloth</li>
+      </thingDefs>
+    </apparelStuffFilter>
+  </FactionDef>
+
+  <FactionDef ParentName="PlayerFactionBase">
+    <defName>Ferny_MedievalOrbitalSurvivors</defName>
+    <label>New Starhold</label>
+    <description>A small household stranded in a failing station above the rim.</description>
+    <isPlayer>true</isPlayer>
+    <categoryTag>Tribal</categoryTag>
+    <pawnSingular>survivor</pawnSingular>
+    <pawnsPlural>survivors</pawnsPlural>
+    <basicMemberKind>Tribesperson</basicMemberKind>
+    <techLevel>Medieval</techLevel>
+    <factionNameMaker>NamerFactionTribal</factionNameMaker>
+    <settlementNameMaker>NamerSettlementTribal</settlementNameMaker>
+    <allowedCultures>
+      <li>Corunan</li>
+    </allowedCultures>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Tribal</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+    <factionIconPath>World/WorldObjects/Expanding/Village</factionIconPath>
+    <settlementTexturePath>World/WorldObjects/TribalSettlement</settlementTexturePath>
+    <forageabilityFactor>1.4</forageabilityFactor>
+    <startingResearchTags>
+      <li>TribalStart</li>
+    </startingResearchTags>
+    <startingTechprintsResearchTags>
+      <li>TribalStart</li>
+      <li>TribalStartTechprints</li>
+    </startingTechprintsResearchTags>
+    <apparelStuffFilter>
+      <thingDefs>
+        <li>Cloth</li>
+      </thingDefs>
+    </apparelStuffFilter>
+    <recipePrerequisiteTags>
+      <li>Tribal</li>
+    </recipePrerequisiteTags>
+  </FactionDef>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Ferny_AnimalOrbitalStation</defName>
+    <label>Orbital Station</label>
+    <modExtensions>
+      <li Class="ProgressionScenarios.ScenarioExtension">
+        <iconPath>ScenarioIcons/OrbitalStation</iconPath>
+        <displayOrder>99</displayOrder>
+      </li>
+    </modExtensions>
+    <description>The three of you awake aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</description>
+    <scenario>
+      <summary>Three wild men awaken with nothing aboard an orbital station.</summary>
+      <playerFaction>
+        <factionDef>Ferny_AnimalOrbitalSurvivors</factionDef>
+      </playerFaction>
+      <parts Inherit="False">
+        <li Class="ScenPart_PlanetLayer">
+          <def>PlanetLayerFixed</def>
+          <tag>Orbit</tag>
+          <layer>Orbit</layer>
+          <settingsDef>Orbit</settingsDef>
+          <hide>true</hide>
+          <connections>
+            <Surface>
+              <zoomMode>ZoomIn</zoomMode>
+            </Surface>
+          </connections>
+        </li>
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>The three of you awake from cryptosleep aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>3</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+        <li Class="ScenPart_ForcedMap">
+          <def>ForcedMap</def>
+          <mapGenerator>OrbitalStationMap</mapGenerator>
+          <layerDef>Orbit</layerDef>
+        </li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <method>Standing</method>
+        </li>
+        <li Class="ScenPart_ForcedHediff">
+          <def>ForcedHediff</def>
+          <visible>false</visible>
+          <context>PlayerStarter</context>
+          <chance>0.5</chance>
+          <hideOffMap>true</hideOffMap>
+          <hediff>CryptosleepSickness</hediff>
+          <severityRange>1~1</severityRange>
+        </li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Ferny_NeolithicOrbitalStation</defName>
+    <label>Orbital Station</label>
+    <modExtensions>
+      <li Class="ProgressionScenarios.ScenarioExtension">
+        <iconPath>ScenarioIcons/OrbitalStation</iconPath>
+        <displayOrder>99</displayOrder>
+      </li>
+    </modExtensions>
+    <description>The three of you awake from cryptosleep aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</description>
+    <scenario>
+      <summary>Three tribals awaken aboard an orbital station.</summary>
+      <playerFaction>
+        <factionDef>PlayerTribe</factionDef>
+      </playerFaction>
+      <parts Inherit="False">
+        <li Class="ScenPart_PlanetLayer"><def>PlanetLayerFixed</def><tag>Orbit</tag><layer>Orbit</layer><settingsDef>Orbit</settingsDef><hide>true</hide><connections><Surface><zoomMode>ZoomIn</zoomMode></Surface></connections></li>
+        <li Class="ScenPart_GameStartDialog"><def>GameStartDialog</def><text>The three of you awake from cryptosleep aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</text><closeSound>GameStartSting</closeSound></li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"><def>ConfigPage_ConfigureStartingPawns</def><pawnCount>3</pawnCount><pawnChoiceCount>8</pawnChoiceCount></li>
+        <li Class="ScenPart_ForcedMap"><def>ForcedMap</def><mapGenerator>OrbitalStationMap</mapGenerator><layerDef>Orbit</layerDef></li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod"><def>PlayerPawnsArriveMethod</def><method>Standing</method></li>
+        <li Class="ScenPart_ForcedHediff"><def>ForcedHediff</def><visible>false</visible><context>PlayerStarter</context><chance>0.5</chance><hideOffMap>true</hideOffMap><hediff>CryptosleepSickness</hediff><severityRange>1~1</severityRange></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Silver</thingDef><count>300</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>20</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>10</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Ferny_MedievalOrbitalStation</defName>
+    <label>Orbital Station</label>
+    <modExtensions><li Class="ProgressionScenarios.ScenarioExtension"><iconPath>ScenarioIcons/OrbitalStation</iconPath><displayOrder>99</displayOrder></li></modExtensions>
+    <description>The three of you awake from cryptosleep aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</description>
+    <scenario>
+      <summary>Three medieval people awaken aboard an orbital station.</summary>
+      <playerFaction><factionDef>Ferny_MedievalOrbitalSurvivors</factionDef></playerFaction>
+      <parts Inherit="False">
+        <li Class="ScenPart_PlanetLayer"><def>PlanetLayerFixed</def><tag>Orbit</tag><layer>Orbit</layer><settingsDef>Orbit</settingsDef><hide>true</hide><connections><Surface><zoomMode>ZoomIn</zoomMode></Surface></connections></li>
+        <li Class="ScenPart_GameStartDialog"><def>GameStartDialog</def><text>The three of you awake from cryptosleep aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</text><closeSound>GameStartSting</closeSound></li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"><def>ConfigPage_ConfigureStartingPawns</def><pawnCount>3</pawnCount><pawnChoiceCount>8</pawnChoiceCount></li>
+        <li Class="ScenPart_ForcedMap"><def>ForcedMap</def><mapGenerator>OrbitalStationMap</mapGenerator><layerDef>Orbit</layerDef></li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod"><def>PlayerPawnsArriveMethod</def><method>Standing</method></li>
+        <li Class="ScenPart_ForcedHediff"><def>ForcedHediff</def><visible>false</visible><context>PlayerStarter</context><chance>0.5</chance><hideOffMap>true</hideOffMap><hediff>CryptosleepSickness</hediff><severityRange>1~1</severityRange></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Silver</thingDef><count>300</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>20</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>10</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Ferny_UltratechOrbitalStation</defName>
+    <label>Orbital Station</label>
+    <modExtensions><li Class="ProgressionScenarios.ScenarioExtension"><iconPath>ScenarioIcons/OrbitalStation</iconPath><displayOrder>99</displayOrder></li></modExtensions>
+    <description>The three of you awake from cryptosleep aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</description>
+    <scenario>
+      <summary>Three survivors awaken aboard an orbital station.</summary>
+      <playerFaction><factionDef>Ferny_Ultras</factionDef></playerFaction>
+      <parts Inherit="False">
+        <li Class="ScenPart_PlanetLayer"><def>PlanetLayerFixed</def><tag>Orbit</tag><layer>Orbit</layer><settingsDef>Orbit</settingsDef><hide>true</hide><connections><Surface><zoomMode>ZoomIn</zoomMode></Surface></connections></li>
+        <li Class="ScenPart_GameStartDialog"><def>GameStartDialog</def><text>The three of you awake from cryptosleep aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</text><closeSound>GameStartSting</closeSound></li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"><def>ConfigPage_ConfigureStartingPawns</def><pawnCount>3</pawnCount><pawnChoiceCount>8</pawnChoiceCount></li>
+        <li Class="ScenPart_ForcedMap"><def>ForcedMap</def><mapGenerator>OrbitalStationMap</mapGenerator><layerDef>Orbit</layerDef></li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod"><def>PlayerPawnsArriveMethod</def><method>Standing</method></li>
+        <li Class="ScenPart_ForcedHediff"><def>ForcedHediff</def><visible>false</visible><context>PlayerStarter</context><chance>0.5</chance><hideOffMap>true</hideOffMap><hediff>CryptosleepSickness</hediff><severityRange>1~1</severityRange></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Silver</thingDef><count>300</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>20</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>10</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <!-- <ScenarioDef ParentName="ScenarioBase">
+    <defName>Ferny_AnimalOrbitalExpedition</defName>
+    <label>Stolen Gravship Orbital Station</label>
+    <modExtensions><li Class="ProgressionScenarios.ScenarioExtension"><iconPath>ScenarioIcons/OrbitalStation</iconPath><displayOrder>99</displayOrder></li></modExtensions>
+    <description>Your gravship arrives at an abandoned orbital station drifting high above a rimworld. Though old and decaying, its life support systems still function. Whatever brought you here, you're on your own now.</description>
+    <scenario>
+      <summary>A crew of three arrives to reclaim an abandoned orbital station.</summary>
+      <playerFaction><factionDef>Ferny_AnimalOrbitalSurvivors</factionDef></playerFaction>
+      <parts Inherit="False">
+        <li Class="ScenPart_PlanetLayer"><def>PlanetLayerFixed</def><tag>Orbit</tag><layer>Orbit</layer><settingsDef>Orbit</settingsDef><hide>true</hide><connections><Surface><zoomMode>ZoomIn</zoomMode></Surface></connections></li>
+        <li Class="ScenPart_GameStartDialog"><def>GameStartDialog</def><text>Your gravship has docked with an abandoned orbital station. Though worn by age and neglect, its essential systems remain operational. Whatever brought you here, you're on your own now.</text><closeSound>GameStartSting</closeSound></li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"><def>ConfigPage_ConfigureStartingPawns</def><pawnCount>3</pawnCount><pawnChoiceCount>8</pawnChoiceCount><allowedDevelopmentalStages>Adult, Child</allowedDevelopmentalStages><requiredSkills><li>Intellectual</li></requiredSkills></li>
+        <li Class="ScenPart_ForcedMap"><def>ForcedMap</def><mapGenerator>OrbitalStationMap_Gravship</mapGenerator><layerDef>Orbit</layerDef></li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod"><def>PlayerPawnsArriveMethod</def><method>Gravship</method></li>
+        <li Class="ScenPart_DisableQuest"><def>DisableQuest</def><questDef>MechanoidSignal</questDef></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BasicGravtech</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BiofuelRefining</project></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Chemfuel</thingDef><count>100</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>WoodLog</thingDef><count>250</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>60</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_Autopistol</thingDef></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_MachinePistol</thingDef></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MeleeWeapon_BreachAxe</thingDef><stuff>Steel</stuff></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Steel</thingDef><count>350</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef> -->
+
+  <!-- <ScenarioDef ParentName="ScenarioBase">
+    <defName>Ferny_NeolithicOrbitalExpedition</defName>
+    <label>Orbital Expedition</label>
+    <modExtensions><li Class="ProgressionScenarios.ScenarioExtension"><iconPath>ScenarioIcons/OrbitalStation</iconPath><displayOrder>99</displayOrder></li></modExtensions>
+    <description>Your gravship arrives at an abandoned orbital station drifting high above a rimworld. Though old and decaying, its life support systems still function. Whatever brought you here, you're on your own now.</description>
+    <scenario>
+      <summary>A crew of three arrives to reclaim an abandoned orbital station.</summary>
+      <playerFaction><factionDef>PlayerTribe</factionDef></playerFaction>
+      <parts Inherit="False">
+        <li Class="ScenPart_PlanetLayer"><def>PlanetLayerFixed</def><tag>Orbit</tag><layer>Orbit</layer><settingsDef>Orbit</settingsDef><hide>true</hide><connections><Surface><zoomMode>ZoomIn</zoomMode></Surface></connections></li>
+        <li Class="ScenPart_GameStartDialog"><def>GameStartDialog</def><text>Your gravship has docked with an abandoned orbital station. Though worn by age and neglect, its essential systems remain operational. Whatever brought you here, you're on your own now.</text><closeSound>GameStartSting</closeSound></li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"><def>ConfigPage_ConfigureStartingPawns</def><pawnCount>3</pawnCount><pawnChoiceCount>8</pawnChoiceCount><allowedDevelopmentalStages>Adult, Child</allowedDevelopmentalStages><requiredSkills><li>Intellectual</li></requiredSkills></li>
+        <li Class="ScenPart_ForcedMap"><def>ForcedMap</def><mapGenerator>OrbitalStationMap_Gravship</mapGenerator><layerDef>Orbit</layerDef></li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod"><def>PlayerPawnsArriveMethod</def><method>Gravship</method></li>
+        <li Class="ScenPart_DisableQuest"><def>DisableQuest</def><questDef>MechanoidSignal</questDef></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BasicGravtech</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BiofuelRefining</project></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Chemfuel</thingDef><count>100</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>WoodLog</thingDef><count>250</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>60</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_Autopistol</thingDef></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_MachinePistol</thingDef></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MeleeWeapon_BreachAxe</thingDef><stuff>Steel</stuff></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Steel</thingDef><count>350</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef> -->
+
+  <!-- <ScenarioDef ParentName="ScenarioBase">
+    <defName>Ferny_MedievalOrbitalExpedition</defName>
+    <label>Orbital Expedition</label>
+    <modExtensions><li Class="ProgressionScenarios.ScenarioExtension"><iconPath>ScenarioIcons/OrbitalStation</iconPath><displayOrder>99</displayOrder></li></modExtensions>
+    <description>Your gravship arrives at an abandoned orbital station drifting high above a rimworld. Though old and decaying, its life support systems still function. Whatever brought you here, you're on your own now.</description>
+    <scenario>
+      <summary>A crew of three arrives to reclaim an abandoned orbital station.</summary>
+      <playerFaction><factionDef>Ferny_MedievalOrbitalSurvivors</factionDef></playerFaction>
+      <parts Inherit="False">
+        <li Class="ScenPart_PlanetLayer"><def>PlanetLayerFixed</def><tag>Orbit</tag><layer>Orbit</layer><settingsDef>Orbit</settingsDef><hide>true</hide><connections><Surface><zoomMode>ZoomIn</zoomMode></Surface></connections></li>
+        <li Class="ScenPart_GameStartDialog"><def>GameStartDialog</def><text>Your gravship has docked with an abandoned orbital station. Though worn by age and neglect, its essential systems remain operational. Whatever brought you here, you're on your own now.</text><closeSound>GameStartSting</closeSound></li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"><def>ConfigPage_ConfigureStartingPawns</def><pawnCount>3</pawnCount><pawnChoiceCount>8</pawnChoiceCount><allowedDevelopmentalStages>Adult, Child</allowedDevelopmentalStages><requiredSkills><li>Intellectual</li></requiredSkills></li>
+        <li Class="ScenPart_ForcedMap"><def>ForcedMap</def><mapGenerator>OrbitalStationMap_Gravship</mapGenerator><layerDef>Orbit</layerDef></li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod"><def>PlayerPawnsArriveMethod</def><method>Gravship</method></li>
+        <li Class="ScenPart_DisableQuest"><def>DisableQuest</def><questDef>MechanoidSignal</questDef></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BasicGravtech</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BiofuelRefining</project></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Chemfuel</thingDef><count>100</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>WoodLog</thingDef><count>250</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>60</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_Autopistol</thingDef></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_MachinePistol</thingDef></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MeleeWeapon_BreachAxe</thingDef><stuff>Steel</stuff></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Steel</thingDef><count>350</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef> -->
+
+  <ScenarioDef ParentName="ScenarioBase">
+    <defName>Ferny_UltratechOrbitalExpedition</defName>
+    <label>Orbital Expedition</label>
+    <modExtensions><li Class="ProgressionScenarios.ScenarioExtension"><iconPath>ScenarioIcons/OrbitalStation</iconPath><displayOrder>99</displayOrder></li></modExtensions>
+    <description>Your gravship arrives at an abandoned orbital station drifting high above a rimworld. Though old and decaying, its life support systems still function. Whatever brought you here, you're on your own now.</description>
+    <scenario>
+      <summary>A crew of three arrives to reclaim an abandoned orbital station.</summary>
+      <playerFaction><factionDef>Ferny_Ultras</factionDef></playerFaction>
+      <parts Inherit="False">
+        <li Class="ScenPart_PlanetLayer"><def>PlanetLayerFixed</def><tag>Orbit</tag><layer>Orbit</layer><settingsDef>Orbit</settingsDef><hide>true</hide><connections><Surface><zoomMode>ZoomIn</zoomMode></Surface></connections></li>
+        <li Class="ScenPart_GameStartDialog"><def>GameStartDialog</def><text>Your gravship has docked with an abandoned orbital station. Though worn by age and neglect, its essential systems remain operational. Whatever brought you here, you're on your own now.</text><closeSound>GameStartSting</closeSound></li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"><def>ConfigPage_ConfigureStartingPawns</def><pawnCount>3</pawnCount><pawnChoiceCount>8</pawnChoiceCount><allowedDevelopmentalStages>Adult, Child</allowedDevelopmentalStages><requiredSkills><li>Intellectual</li></requiredSkills></li>
+        <li Class="ScenPart_ForcedMap"><def>ForcedMap</def><mapGenerator>OrbitalStationMap_Gravship</mapGenerator><layerDef>Orbit</layerDef></li>
+        <li Class="ScenPart_PlayerPawnsArriveMethod"><def>PlayerPawnsArriveMethod</def><method>Gravship</method></li>
+        <li Class="ScenPart_DisableQuest"><def>DisableQuest</def><questDef>MechanoidSignal</questDef></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BasicGravtech</project></li>
+        <li Class="ScenPart_StartingResearch"><def>StartingResearch</def><project>BiofuelRefining</project></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Chemfuel</thingDef><count>100</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>WoodLog</thingDef><count>250</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MealSurvivalPack</thingDef><count>60</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MedicineIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>ComponentIndustrial</thingDef><count>40</count></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_Autopistol</thingDef></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_MachinePistol</thingDef></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>MeleeWeapon_BreachAxe</thingDef><stuff>Steel</stuff></li>
+        <li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Steel</thingDef><count>350</count></li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

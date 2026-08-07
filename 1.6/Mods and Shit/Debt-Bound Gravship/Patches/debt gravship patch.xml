@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ScenarioDef[defName="DebtBoundGravship"]/label</xpath>
+        <value>
+            <label>Loaned Gravship</label>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ScenarioDef[defName="DebtBoundGravship"]/scenario/summary</xpath>
+        <value>
+            <summary>A crew of three must pay off a massive loan for their new gravship.</summary>
+        </value>
+    </Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/ScenarioDef[defName="DebtBoundGravship"]</xpath>
+		<value>
+			<li Class="ProgressionScenarios.ScenarioExtension">
+				<iconPath>ScenarioIcons/DebtGravship</iconPath>
+				<displayOrder>11</displayOrder>
+			</li>
+		</value>
+	</Operation>
+
+</Patch>

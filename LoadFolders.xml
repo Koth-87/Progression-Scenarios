@@ -107,5 +107,9 @@
     <li IfModActive="vanillaquestsexpanded.ancients">1.6/Mods and Shit/VQE Ancients</li>
     <li IfModActive="vanillaracesexpanded.saurid">1.6/Mods and Shit/VRE Saurids</li>
     <li IfModActive="sarg.alphagenes">1.6/Mods and Shit/Alpha Genes</li>
+    <li IfModActive="rer.gravshiploanscenario">1.6/Mods and Shit/Debt-Bound Gravship</li>
+    <li IfModActive="ferny.progressionrobotics2">1.6/Mods and Shit/Progression Robotics 2</li>
+    <li IfModActive="sarg.alphabooks">1.6/Mods and Shit/Alpha Books</li>
+    <li IfModActive="alt4s.OrbitalStationStart">1.6/Mods and Shit/Orbital Station Start</li>
   </v1.6>
 </loadFolders>

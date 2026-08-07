@@ -72,6 +72,7 @@
 		<li>vanillaexpanded.vwems</li>
 		<li>vanillaexpanded.vweft</li>
 		<li>ferny.progressionaesthetics</li>
+		<li>ferny.progressionfurniture</li>
 		<li>ferny.progressionproduction</li>
 		<li>ferny.progressionkitchen</li>
 		<li>ferny.progressionrobotics</li>
@@ -83,5 +84,9 @@
 		<li>vanillaexpanded.gravship</li>
 		<li>vanillaracesexpanded.saurid</li>
 		<li>sarg.alphagenes</li>
+		<li>rer.gravshiploanscenario</li>
+		<li>ferny.progressionrobotics2</li>
+		<li>sarg.alphabooks</li>
+		<li>alt4s.OrbitalStationStart</li>
 	</loadAfter>
 </ModMetaData>
