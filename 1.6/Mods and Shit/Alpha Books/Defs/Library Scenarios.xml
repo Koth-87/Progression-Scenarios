@@ -2,38 +2,6 @@
 <Defs>
 
   <FactionDef ParentName="PlayerFactionBase">
-    <defName>Ferny_AnimalArchivists</defName>
-    <label>First Readers</label>
-    <description>A band of barely-organized survivors huddled around the first scraps of recorded knowledge.</description>
-    <isPlayer>true</isPlayer>
-    <categoryTag>Tribal</categoryTag>
-    <pawnSingular>reader</pawnSingular>
-    <pawnsPlural>readers</pawnsPlural>
-    <basicMemberKind>Tribesperson</basicMemberKind>
-    <techLevel>Animal</techLevel>
-    <factionNameMaker>NamerFactionTribal</factionNameMaker>
-    <settlementNameMaker>NamerSettlementTribal</settlementNameMaker>
-    <allowedCultures>
-      <li>Corunan</li>
-    </allowedCultures>
-    <backstoryFilters>
-      <li>
-        <categories>
-          <li>Tribal</li>
-        </categories>
-      </li>
-    </backstoryFilters>
-    <factionIconPath>World/WorldObjects/Expanding/Village</factionIconPath>
-    <settlementTexturePath>World/WorldObjects/TribalSettlement</settlementTexturePath>
-    <forageabilityFactor>1.7</forageabilityFactor>
-    <apparelStuffFilter>
-      <thingDefs>
-        <li>Cloth</li>
-      </thingDefs>
-    </apparelStuffFilter>
-  </FactionDef>
-
-  <FactionDef ParentName="PlayerFactionBase">
     <defName>Ferny_MedievalArchivists</defName>
     <label>New Archive</label>
     <description>A small learned household raised among old shelves, failed kingdoms, and stubborn ink.</description>
@@ -75,7 +43,7 @@
     </recipePrerequisiteTags>
   </FactionDef>
 
-  <ScenarioDef ParentName="ScenarioBase">
+  <ScenarioDef ParentName="ScenarioBase" MayRequire="oskarpotocki.vfe.tribals">
     <defName>Ferny_AnimalLibraryStart</defName>
     <label>Ancient Library</label>
     <modExtensions>
@@ -89,13 +57,13 @@
       <summary>A small group of cavemen discover an abandoned library.</summary>
       <playerFaction>
         <def>PlayerFaction</def>
-        <factionDef>Ferny_AnimalArchivists</factionDef>
+        <factionDef>VFET_WildMen</factionDef>
       </playerFaction>
       <parts>
         <li Class="ScenPart_GameStartDialog">
           <def>GameStartDialog</def>
           <text>While out picking berries, you followed a harsh scent to a delapidated structure. The structure is filled with recordings of ideas from long ago, smelling of rotting material and nature's reclamation.\n\nThe books are falling apart, the roof is tired, and the wild is already pressing in. Still, the shapes on the pages beckon you toward them.</text>
-          <closeSound>GameStartSting</closeSound>
+          <closeSound>VFET_GameStartSting_WildMen</closeSound>
         </li>
         <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
           <def>ConfigPage_ConfigureStartingPawns</def>

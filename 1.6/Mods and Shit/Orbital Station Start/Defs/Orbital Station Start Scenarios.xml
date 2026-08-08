@@ -2,38 +2,6 @@
 <Defs>
 
   <FactionDef ParentName="PlayerFactionBase">
-    <defName>Ferny_AnimalOrbitalSurvivors</defName>
-    <label>First Station</label>
-    <description>A band of barely-organized survivors stranded above a world they do not understand.</description>
-    <isPlayer>true</isPlayer>
-    <categoryTag>Tribal</categoryTag>
-    <pawnSingular>survivor</pawnSingular>
-    <pawnsPlural>survivors</pawnsPlural>
-    <basicMemberKind>WildMan</basicMemberKind>
-    <techLevel>Animal</techLevel>
-    <factionNameMaker>NamerFactionTribal</factionNameMaker>
-    <settlementNameMaker>NamerSettlementTribal</settlementNameMaker>
-    <allowedCultures>
-      <li>Corunan</li>
-    </allowedCultures>
-    <backstoryFilters>
-      <li>
-        <categories>
-          <li>Tribal</li>
-        </categories>
-      </li>
-    </backstoryFilters>
-    <factionIconPath>World/WorldObjects/Expanding/Village</factionIconPath>
-    <settlementTexturePath>World/WorldObjects/TribalSettlement</settlementTexturePath>
-    <forageabilityFactor>1.7</forageabilityFactor>
-    <apparelStuffFilter>
-      <thingDefs>
-        <li>Cloth</li>
-      </thingDefs>
-    </apparelStuffFilter>
-  </FactionDef>
-
-  <FactionDef ParentName="PlayerFactionBase">
     <defName>Ferny_MedievalOrbitalSurvivors</defName>
     <label>New Starhold</label>
     <description>A small household stranded in a failing station above the rim.</description>
@@ -75,7 +43,7 @@
     </recipePrerequisiteTags>
   </FactionDef>
 
-  <ScenarioDef ParentName="ScenarioBase">
+  <ScenarioDef ParentName="ScenarioBase" MayRequire="oskarpotocki.vfe.tribals">
     <defName>Ferny_AnimalOrbitalStation</defName>
     <label>Space Station</label>
     <modExtensions>
@@ -88,7 +56,8 @@
     <scenario>
       <summary>Three wild men awaken with nothing aboard an orbital station.</summary>
       <playerFaction>
-        <factionDef>Ferny_AnimalOrbitalSurvivors</factionDef>
+        <def>PlayerFaction</def>
+        <factionDef>VFET_WildMen</factionDef>
       </playerFaction>
       <parts Inherit="False">
         <li Class="ScenPart_PlanetLayer">
@@ -106,7 +75,7 @@
         <li Class="ScenPart_GameStartDialog">
           <def>GameStartDialog</def>
           <text>The three of you awake from cryptosleep aboard an orbital station. You don't remember who you are or why you're here. The station is old and decaying, but its essential systems still function. Its halls are empty. Survival is now your only concern.</text>
-          <closeSound>GameStartSting</closeSound>
+          <closeSound>VFET_GameStartSting_WildMen</closeSound>
         </li>
         <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
           <def>ConfigPage_ConfigureStartingPawns</def>
