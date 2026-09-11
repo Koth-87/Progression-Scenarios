@@ -3,6 +3,12 @@
 	<PS_ChooseTechLevel>Choose your starting technology</PS_ChooseTechLevel>
 	<PS_NoScenariosForTechLevel>No scenarios available for selected tech-level.</PS_NoScenariosForTechLevel>
 	<PS_Ultratech>Ultratech</PS_Ultratech>
+	<PS_SelectFromScenarios>Select from {0} scenarios</PS_SelectFromScenarios>
+	<PS_SelectFromScenario>Select from 1 scenario</PS_SelectFromScenario>
+	<PS_Recommended>RECOMMENDED</PS_Recommended>
+	<PS_UnlockPreviousErasTitle>Previous era technology</PS_UnlockPreviousErasTitle>
+	<PS_UnlockPreviousEras>Unlock all technology from previous eras?</PS_UnlockPreviousEras>
+	<PS_UnlockPreviousErasDesc>This determines whether all research projects from eras prior to {0} will be provided at the start of your game. Do note that this can make your game feel overwhelmed with content. Having this setting off will just provide you with the essentials from the previous eras.</PS_UnlockPreviousErasDesc>
 	<PS_TechLevelDesc_Animal>Campfires, sticks, and stones. Difficult.</PS_TechLevelDesc_Animal>
 	<PS_TechLevelDesc_Neolithic>Tribes, republics, and civilization. Basics.</PS_TechLevelDesc_Neolithic>
 	<PS_TechLevelDesc_Medieval>Castles, knights, and crossbows. Bloody.</PS_TechLevelDesc_Medieval>

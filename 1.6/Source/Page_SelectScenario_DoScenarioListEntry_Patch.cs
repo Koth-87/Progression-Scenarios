@@ -1,6 +1,7 @@
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
+using Verse;
 
 namespace ProgressionScenarios
 {
@@ -17,6 +18,15 @@ namespace ProgressionScenarios
 			GUI.DrawTexture(iconRect, icon);
 			rect.xMin += 48f;
 			rect.width += 4f;
+		}
+
+		public static void Postfix(Rect rect, Scenario scen)
+		{
+			if (!scen.IsRecommended()) return;
+			var font = Text.Font;
+			var inner = rect.ContractedBy(4f);
+			Utils.DrawRecommendedLabel(new Rect(inner.x, inner.y, inner.width, 22f), Page_SelectScenario_PreOpen_Patch.openedAt, TextAnchor.UpperRight);
+			Text.Font = font;
 		}
 	}
 }

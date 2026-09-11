@@ -15,6 +15,12 @@ namespace ProgressionScenarios
 	[StaticConstructorOnStartup]
 	public class Page_SelectTechLevel : Page
 	{
+		private const float TitleAdvance = 27f;
+		private const float CountGap = 6f;
+		private const float RecommendedReserve = 26f;
+
+		private float openedAt;
+
 		public override string PageTitle => "PS_ChooseTechLevel".Translate();
 		public override Vector2 InitialSize
 		{
@@ -28,6 +34,8 @@ namespace ProgressionScenarios
 		{
 			base.PreOpen();
 			ScenarioLister.MarkDirty();
+			Utils.RecacheScenarioCounts();
+			openedAt = Time.realtimeSinceStartup;
 		}
 
 		public override void DoWindowContents(Rect rect)
@@ -97,22 +105,33 @@ namespace ProgressionScenarios
 			var tex = ContentFinder<Texture2D>.Get("UI/Icons/" + techLevel.ToString(), false);
 			if (tex != null) GUI.DrawTexture(iconRect, tex);
 
+			var recommended = techLevel == TechLevel.Animal && Utils.ThemingModActive;
 			var textRect = new Rect(iconRect.xMax + 15f, boxRect.y, boxRect.width - iconRect.width - 45f, boxRect.height);
-			var centerY = textRect.height / 2f;
-			Text.Font = GameFont.Medium;
+			var desc = ("PS_TechLevelDesc_" + techLevel.ToString()).Translate();
+			var count = techLevel.ScenarioCount();
+			var countLabel = count == 1 ? "PS_SelectFromScenario".Translate() : "PS_SelectFromScenarios".Translate(count);
+
 			Text.Anchor = TextAnchor.UpperLeft;
-			Widgets.Label(new Rect(textRect.x, textRect.y + centerY - 25f, textRect.width, 30f), GetTechLevelName(techLevel));
 			Text.Font = GameFont.Tiny;
-			var descHeight = Text.CalcHeight(("PS_TechLevelDesc_" + techLevel.ToString()).Translate(), textRect.width);
-			Widgets.Label(new Rect(textRect.x, textRect.y + centerY + 2f, textRect.width, descHeight), ("PS_TechLevelDesc_" + techLevel.ToString()).Translate());
+			var descHeight = Text.CalcHeight(desc, textRect.width);
+			var countHeight = Text.CalcHeight(countLabel, textRect.width);
+			var blockHeight = TitleAdvance + descHeight + CountGap + countHeight;
+			var curY = textRect.y + (textRect.height - (recommended ? RecommendedReserve : 0f) - blockHeight) / 2f;
+
+			Text.Font = GameFont.Medium;
+			Widgets.Label(new Rect(textRect.x, curY, textRect.width, 32f), techLevel.GetTechLevelName());
+			curY += TitleAdvance;
+			Text.Font = GameFont.Tiny;
+			Widgets.Label(new Rect(textRect.x, curY, textRect.width, descHeight), desc);
+			curY += descHeight + CountGap;
+			GUI.color = ColoredText.SubtleGrayColor;
+			Widgets.Label(new Rect(textRect.x, curY, textRect.width, countHeight), countLabel);
+			GUI.color = Color.white;
+
+			if (recommended) Utils.DrawRecommendedLabel(new Rect(boxRect.x, boxRect.yMax - RecommendedReserve, boxRect.width, 24f), openedAt, TextAnchor.UpperCenter);
+
 			Text.Anchor = TextAnchor.UpperLeft;
 			Text.Font = GameFont.Small;
-		}
-
-		private string GetTechLevelName(TechLevel techLevel)
-		{
-			if (techLevel == TechLevel.Ultra) return "PS_Ultratech".Translate();
-			return techLevel.ToStringHuman().CapitalizeFirst();
 		}
 	}
 }
