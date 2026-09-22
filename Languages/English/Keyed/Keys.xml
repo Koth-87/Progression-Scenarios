@@ -5,6 +5,11 @@
 	<PS_Ultratech>Ultratech</PS_Ultratech>
 	<PS_SelectFromScenarios>Select from {0} scenarios</PS_SelectFromScenarios>
 	<PS_SelectFromScenario>Select from 1 scenario</PS_SelectFromScenario>
+	<PS_ScenarioCount>{0} scenarios</PS_ScenarioCount>
+	<PS_ScenarioCountOne>1 scenario</PS_ScenarioCountOne>
+	<PS_TechLevelSidebarHeader>Starting technology</PS_TechLevelSidebarHeader>
+	<PS_HideTechLevelSidebar>Hide starting technology</PS_HideTechLevelSidebar>
+	<PS_ShowTechLevelSidebar>Show starting technology</PS_ShowTechLevelSidebar>
 	<PS_Recommended>RECOMMENDED</PS_Recommended>
 	<PS_UnlockPreviousErasTitle>Previous era technology</PS_UnlockPreviousErasTitle>
 	<PS_UnlockPreviousEras>Unlock all technology from previous eras?</PS_UnlockPreviousEras>

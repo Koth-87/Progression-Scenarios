@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
@@ -11,6 +13,7 @@ namespace ProgressionScenarios
 	{
 		public static void Prefix(ref Rect rect, Scenario scen)
 		{
+			if (Utils.ScenarioSearchModActive) rect.y += Utils.ScenarioSearchListOffset;
 			var icon = scen.GetIcon();
 			if (icon == null) return;
 			rect.x -= 4;
@@ -24,9 +27,19 @@ namespace ProgressionScenarios
 		{
 			if (!scen.IsRecommended()) return;
 			var font = Text.Font;
-			var inner = rect.ContractedBy(4f);
-			Utils.DrawRecommendedLabel(new Rect(inner.x, inner.y, inner.width, 22f), Page_SelectScenario_PreOpen_Patch.openedAt, TextAnchor.UpperRight);
+			Utils.DrawRecommendedTag(rect, Page_SelectScenario_PreOpen_Patch.openedAt, false);
 			Text.Font = font;
+		}
+	}
+
+	[HarmonyPatch(typeof(Page_SelectScenario), "ListScenariosOnListing")]
+	public static class Page_SelectScenario_ListScenariosOnListing_Patch
+	{
+		public static void Prefix(Listing_Standard listing, IEnumerable<Scenario> scenarios)
+		{
+			if (listing.CurHeight > 0f) return;
+			var first = scenarios.FirstOrDefault(s => s.showInUI);
+			if (first != null && first.IsRecommended()) listing.Gap(6f);
 		}
 	}
 }

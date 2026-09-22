@@ -111,5 +111,7 @@
     <li IfModActive="ferny.progressionrobotics2">1.6/Mods and Shit/Progression Robotics 2</li>
     <li IfModActive="sarg.alphabooks">1.6/Mods and Shit/Alpha Books</li>
     <li IfModActive="alt4s.OrbitalStationStart">1.6/Mods and Shit/Orbital Station Start</li>
+    <li IfModActive="vanillaexpanded.gravship">1.6/Mods and Shit/VE Gravship</li>
+    <li IfModActive="vanillaexpanded.gravship2">1.6/Mods and Shit/VE Gravship 2</li>
   </v1.6>
 </loadFolders>

@@ -17,19 +17,14 @@ namespace ProgressionScenarios
 	{
 		private const float TitleAdvance = 27f;
 		private const float CountGap = 6f;
-		private const float RecommendedReserve = 26f;
+		private const float IconStripGap = 5f;
+		private const float IconStripSize = 20f;
+		private const int IconStripMax = 5;
 
 		private float openedAt;
 
 		public override string PageTitle => "PS_ChooseTechLevel".Translate();
-		public override Vector2 InitialSize
-		{
-			get
-			{
-				var size = base.InitialSize;
-				return new Vector2(size.x, size.y - 75);
-			}
-		}
+		public override Vector2 InitialSize => new Vector2(StandardSize.x + SidebarDrawer.HandleWidth + TechLevelSidebar.Gap, StandardSize.y);
 		public override void PreOpen()
 		{
 			base.PreOpen();
@@ -51,7 +46,7 @@ namespace ProgressionScenarios
 
 			var totalWidth = 3f * boxWidth + 2f * spacingX;
 			var startX = (mainRect.width - totalWidth) / 2f;
-			var startY = 20f;
+			var startY = Mathf.Max(0f, (mainRect.height - (3f * boxHeight + 2f * spacingY)) / 2f);
 
 			var animalRect = new Rect((mainRect.width - boxWidth) / 2f, startY, boxWidth, boxHeight);
 			DrawTechLevelBox(animalRect, TechLevel.Animal);
@@ -68,17 +63,12 @@ namespace ProgressionScenarios
 
 			Widgets.EndGroup();
 
-			var y = rect.y + rect.height - 38f;
-			var label = "Back".Translate();
-			var backSize = 200f;
-			if ((Widgets.ButtonText(new Rect((rect.width / 2f) - (backSize / 2f), y, backSize, BottomButSize.y), label) || KeyBindingDefOf.Cancel.KeyDownEvent) && CanDoBack())
-			{
-				DoBack();
-			}
+			DoBottomButtons(rect, showNext: false);
 		}
 
 		private void DrawTechLevelBox(Rect boxRect, TechLevel techLevel)
 		{
+			var recommended = techLevel == TechLevel.Animal && Utils.ThemingModActive;
 			Widgets.DrawBox(boxRect, 1);
 			Widgets.DrawHighlightIfMouseover(boxRect);
 			if (Widgets.ButtonInvisible(boxRect))
@@ -105,7 +95,6 @@ namespace ProgressionScenarios
 			var tex = ContentFinder<Texture2D>.Get("UI/Icons/" + techLevel.ToString(), false);
 			if (tex != null) GUI.DrawTexture(iconRect, tex);
 
-			var recommended = techLevel == TechLevel.Animal && Utils.ThemingModActive;
 			var textRect = new Rect(iconRect.xMax + 15f, boxRect.y, boxRect.width - iconRect.width - 45f, boxRect.height);
 			var desc = ("PS_TechLevelDesc_" + techLevel.ToString()).Translate();
 			var count = techLevel.ScenarioCount();
@@ -115,8 +104,9 @@ namespace ProgressionScenarios
 			Text.Font = GameFont.Tiny;
 			var descHeight = Text.CalcHeight(desc, textRect.width);
 			var countHeight = Text.CalcHeight(countLabel, textRect.width);
-			var blockHeight = TitleAdvance + descHeight + CountGap + countHeight;
-			var curY = textRect.y + (textRect.height - (recommended ? RecommendedReserve : 0f) - blockHeight) / 2f;
+			var hasIcons = techLevel.Scenarios().Any(s => s.GetIcon() != null);
+			var blockHeight = TitleAdvance + descHeight + CountGap + countHeight + (hasIcons ? IconStripGap + IconStripSize : 0f);
+			var curY = textRect.y + (textRect.height - blockHeight) / 2f;
 
 			Text.Font = GameFont.Medium;
 			Widgets.Label(new Rect(textRect.x, curY, textRect.width, 32f), techLevel.GetTechLevelName());
@@ -127,8 +117,14 @@ namespace ProgressionScenarios
 			GUI.color = ColoredText.SubtleGrayColor;
 			Widgets.Label(new Rect(textRect.x, curY, textRect.width, countHeight), countLabel);
 			GUI.color = Color.white;
+			curY += countHeight;
+			if (hasIcons)
+			{
+				Utils.DrawScenarioIconStrip(new Rect(textRect.x, curY + IconStripGap, textRect.width, IconStripSize), techLevel.Scenarios(), IconStripSize, IconStripMax);
+			}
+			Utils.ScenarioListTip(boxRect, techLevel);
 
-			if (recommended) Utils.DrawRecommendedLabel(new Rect(boxRect.x, boxRect.yMax - RecommendedReserve, boxRect.width, 24f), openedAt, TextAnchor.UpperCenter);
+			if (recommended) Utils.DrawRecommendedTag(boxRect, openedAt, false);
 
 			Text.Anchor = TextAnchor.UpperLeft;
 			Text.Font = GameFont.Small;

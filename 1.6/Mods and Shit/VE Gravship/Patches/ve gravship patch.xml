@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <success>Always</success>
+    <xpath>Defs/ScenarioDef[defName="GravshipEarth"]/label</xpath>
+    <value>
+      <label>New Gravjumper</label>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>Defs/ScenarioDef[defName="GravshipEarth"]/scenario/parts</xpath>
+    <value>
+      <li Class="VanillaGravshipExpanded.ScenPart_ChooseStartingGravship">
+        <def>VGE_ChooseStartingGravship</def>
+        <tag>Gravjumper</tag>
+        <startingAstrofuel>100</startingAstrofuel>
+        <startingOxygen>125</startingOxygen>
+      </li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>Defs/ScenarioDef[defName="Ferny_AnimalOrbitalExpedition" or defName="Ferny_NeolithicOrbitalExpedition" or defName="Ferny_MedievalOrbitalExpedition" or defName="Ferny_IndustrialOrbitalExpedition" or defName="Ferny_SpacerOrbitalExpedition" or defName="Ferny_UltratechOrbitalExpedition"]/scenario/parts</xpath>
+    <value>
+      <li Class="VanillaGravshipExpanded.ScenPart_ChooseStartingGravship">
+        <def>VGE_ChooseStartingGravship</def>
+        <tag>Gravjumper</tag>
+        <startingAstrofuel>100</startingAstrofuel>
+        <startingOxygen>125</startingOxygen>
+      </li>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+    <xpath>Defs/ScenarioDef[defName="DebtBoundGravship"]/scenario/parts</xpath>
+    <value>
+      <li Class="VanillaGravshipExpanded.ScenPart_ChooseStartingGravship">
+        <def>VGE_ChooseStartingGravship</def>
+        <tag>Gravjumper</tag>
+        <startingAstrofuel>100</startingAstrofuel>
+        <startingOxygen>125</startingOxygen>
+      </li>
+    </value>
+  </Operation>
+
+</Patch>

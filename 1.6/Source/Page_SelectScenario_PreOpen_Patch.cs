@@ -12,6 +12,7 @@ namespace ProgressionScenarios
 		public static void Postfix()
 		{
 			openedAt = Time.realtimeSinceStartup;
+			Utils.RecacheScenarioCounts();
 		}
 	}
 }
