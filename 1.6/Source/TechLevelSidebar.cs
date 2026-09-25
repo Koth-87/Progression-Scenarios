@@ -19,8 +19,8 @@ namespace ProgressionScenarios
 		private const float IconStripSize = 14f;
 		private const int IconStripMax = 4;
 
-		private static readonly Color AccentColor = new Color(0.72f, 0.66f, 0.52f);
-		private static readonly Color SelectedText = new Color(1f, 0.92f, 0.72f);
+		private static readonly Color AccentColor = new Color(0.62f, 0.62f, 0.62f);
+		private static readonly Color SelectedText = Color.white;
 
 		private static readonly TechLevel[][] Groups =
 		{
@@ -95,7 +95,7 @@ namespace ProgressionScenarios
 
 			Text.Font = GameFont.Small;
 			Text.Anchor = TextAnchor.UpperLeft;
-			GUI.color = isSelected ? SelectedText : new Color(1f, 1f, 1f, fade);
+			GUI.color = isSelected ? SelectedText : new Color(0.82f, 0.82f, 0.82f, fade);
 			Widgets.Label(new Rect(textX, top, textWidth, 24f), techLevel.GetTechLevelName());
 
 			Text.Font = GameFont.Tiny;
